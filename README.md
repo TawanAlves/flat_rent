@@ -1,9 +1,5 @@
 # flat_rent
 
-flat_rent
-
-## SetupRun Project
-
 <p align="center">
   <a href="https://youtu.be/Jf5OK57SQWk" target="_blank">
     watch vídeo
