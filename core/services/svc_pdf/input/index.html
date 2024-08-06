@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      {{style}}
+    </style>
+  </head>
+  <body>
+    <!-- <img src="https://i.ibb.co/rMhkhGb/flat1.jpg" alt="logo" />
+   <img src="https://i.ibb.co/ZGdGWCH/flat2.jpg" alt="logo" />
+   <img src="https://i.ibb.co/sgDJHzn/flat3.jpg" alt="logo" />
+   <img src="https://i.ibb.co/k08K6pt/flat4.jpg" alt="logo" /> -->
+    <main>
+      <section class="top">
+        <h1>Here our flats available to you</h1>
+        <h3>Choose one and rent</h3>
+      </section>
+      {% if flat_Ids %} {% if 1 in flat_Ids %}
+      <section class="flat_container">
+        <div class="image_container">
+          <img
+            src="https://i.ibb.co/rMhkhGb/flat1.jpg"
+            alt="Flat 1"
+            class="image"
+          />
+        </div>
+        <div class="flat_content">
+          <h3 class="flat_title">Flat 1</h3>
+          <p class="flat_about">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+            doloribus maxime aliquid nemo repudiandae velit praesentium veniam
+            officia aperiam autem, consectetur
+          </p>
+        </div>
+        <div class="flat_price_container">
+          <h1 class="flat_price">R$ 2800,00</h1>
+        </div>
+      </section>
+      {% endif %} {% if 2 in flat_Ids %}
+      <section class="flat_container">
+        <div class="image_container">
+          <img
+            src="https://i.ibb.co/ZGdGWCH/flat2.jpg"
+            alt="Flat 2"
+            class="image"
+          />
+        </div>
+        <div class="flat_content">
+          <h3 class="flat_title">Flat 2</h3>
+          <p class="flat_about">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+            doloribus maxime aliquid nemo repudiandae velit praesentium veniam
+            officia aperiam autem, consectetur
+          </p>
+        </div>
+        <div class="flat_price_container">
+          <h1 class="flat_price">R$ 2800,00</h1>
+        </div>
+      </section>
+      {% endif %} {% if 3 in flat_Ids %}
+      <section class="flat_container">
+        <div class="image_container">
+          <img
+            src="https://i.ibb.co/sgDJHzn/flat3.jpg"
+            alt="Flat 3"
+            class="image"
+          />
+        </div>
+        <div class="flat_content">
+          <h3 class="flat_title">Flat 3</h3>
+          <p class="flat_about">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+            doloribus maxime aliquid nemo repudiandae velit praesentium veniam
+            officia aperiam autem, consectetur
+          </p>
+        </div>
+        <div class="flat_price_container">
+          <h1 class="flat_price">R$ 2800,00</h1>
+        </div>
+      </section>
+      {% endif %} {% if 4 in flat_Ids %}
+      <section class="flat_container">
+        <div class="image_container">
+          <img
+            src="https://i.ibb.co/k08K6pt/flat4.jpg"
+            alt="Flat 4"
+            class="image"
+          />
+        </div>
+        <div class="flat_content">
+          <h3 class="flat_title">Flat 4</h3>
+          <p class="flat_about">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+            doloribus maxime aliquid nemo repudiandae velit praesentium veniam
+            officia aperiam autem, consectetur
+          </p>
+        </div>
+        <div class="flat_price_container">
+          <h1 class="flat_price">R$ 2800,00</h1>
+        </div>
+      </section>
+      {% endif %} {% endif %}
+    </main>
+  </body>
+</html>
