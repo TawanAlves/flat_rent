@@ -33,6 +33,13 @@ export default defineConfig({
       },
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {        
+        additionalData: `@import "@/styles/settings.scss";`
+      }
+    }
+  },
   define: { 'process.env': {} },
   resolve: {
     alias: {

@@ -8,3 +8,18 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+$body-font-family: 'Roboto', sans-serif;
+$background-color: #FFFAFA;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $body-font-family;
+  background-color: $background-color;
+  width: 100vw;
+  height: 100vh;
+}
