@@ -148,3 +148,6 @@ class FlatViewSet(viewsets.ViewSet):
         generate_and_send_pdf_task.delay(email, flatIds)
 
         return Response({'message': 'PDF generation and email sending initiated.'}, status=status.HTTP_200_OK)
+
+
+# TODO: create pagination, add logic to many data
