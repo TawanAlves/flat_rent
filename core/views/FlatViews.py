@@ -1,8 +1,12 @@
+import os
+import subprocess
 from django.shortcuts import render
 from django.http import HttpResponse, QueryDict
 from core import models
+from django.utils.dateparse import parse_date
 from ..serializer import FlatSerializer, BookingSerializer
-
+from core.services import svc_pdf
+from core.task import generate_and_send_pdf_task
 
 from django.utils import timezone
 # from rest_framework.request import Request
@@ -99,3 +103,48 @@ class FlatViewSet(viewsets.ViewSet):
         flats = models.Flat.objects.all()
         serializer = FlatSerializer(flats, many=True)
         return Response(serializer.data)
+
+    @action(detail=False, methods=["get"])
+    def available_flats(self, request):
+        """
+        GET /flats/available_flats/?checkin=YYYY-MM-DD&checkout=YYYY-MM-DD
+        """
+        # TODO: repeated
+        checkin_date = request.GET.get('checkin')
+        checkout_date = request.GET.get('checkout')
+
+        if not checkin_date or not checkout_date:
+            return Response({'error': 'Por favor, forneça as datas de checkin e checkout.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        checkin_date = parse_date(checkin_date)
+        checkout_date = parse_date(checkout_date)
+
+        if not checkin_date or not checkout_date:
+            return Response({'error': 'Datas inválidas.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        booked_flats = models.Booking.objects.filter(
+            checkin__lt=checkout_date,
+            checkout__gt=checkin_date
+        ).values_list('flat_id', flat=True)
+
+        available_flats = models.Flat.objects.exclude(id__in=booked_flats)
+
+        serializer = FlatSerializer(available_flats, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=["post"])
+    def send_pdf(self, request):
+        """
+        POST /flats/send_pdf/
+        """
+        email = request.data.get('email')
+        flatIds = request.data.get('flatIds')
+
+        if not email:
+            return Response({'error': 'Email is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        if not flatIds:
+            return Response({'error': 'Flat IDs are required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        generate_and_send_pdf_task.delay(email, flatIds)
+
+        return Response({'message': 'PDF generation and email sending initiated.'}, status=status.HTTP_200_OK)
