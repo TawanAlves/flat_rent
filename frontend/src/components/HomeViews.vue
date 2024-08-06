@@ -124,7 +124,7 @@
               <!-- {{ availableFlats }} -->
               <v-col cols="12" sm="7">
                 <v-card-item>
-                  <v-card-title> {{ item.nome }} </v-card-title>
+                  <v-card-title> {{ item.name }} </v-card-title>
                 </v-card-item>
 
                 <v-card-text>
@@ -205,7 +205,7 @@ export default {
         const allFlatsResponse = await api.getAllFlats();
         this.flats = allFlatsResponse.data;
         this.flatIdNameMap = this.flats.reduce((map, flat) => {
-          map[flat.id] = flat.nome;
+          map[flat.id] = flat.name;
           return map;
         }, {});
       } catch (error) {

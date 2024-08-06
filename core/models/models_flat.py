@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Flat(models.Model):
-    nome = models.CharField(max_length=15)
+    name = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.nome
+        return self.name

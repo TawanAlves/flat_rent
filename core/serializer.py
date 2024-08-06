@@ -7,7 +7,7 @@ from datetime import datetime
 class FlatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
-        fields = ['id', 'nome']
+        fields = ['id', 'name']
 
 
 class BookingSerializer(serializers.ModelSerializer):

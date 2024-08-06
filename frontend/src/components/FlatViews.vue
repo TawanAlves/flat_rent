@@ -9,7 +9,7 @@
               v-model="selFlat"
               :items="flats"
               item-value="id"
-              item-title="nome"
+              item-title="name"
               variant="underlined"
             >
             </v-select>
@@ -101,7 +101,7 @@
               v-model="selFlat"
               :items="flats"
               item-value="id"
-              item-title="nome"
+              item-title="name"
               variant="underlined"
             >
             </v-select
@@ -169,7 +169,7 @@ export default {
         this.flats = allFlatsResponse.data;
 
         this.flatIdNameMap = this.flats.reduce((map, flat) => {
-          map[flat.id] = flat.nome;
+          map[flat.id] = flat.name;
           return map;
         }, {});
       } catch (error) {
