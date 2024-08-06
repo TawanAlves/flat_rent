@@ -5,7 +5,7 @@ getBookedFlats() {
    return get("flats/");
 },
 
-geAllFlats() {
+getAllFlats() {
    return get("flats/allflats/");
 },
 
@@ -25,5 +25,11 @@ editBooking(item, data) {
    return put(`flats/${item}/`, data)
 },
 
+availableBookings(item) {
+   return get(`flats/available_flats/?${item}`, )
+},
 
+sendPDF(item) {
+   return post("flats/send_pdf/", item)
+},
 }
